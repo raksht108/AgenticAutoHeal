@@ -9,7 +9,7 @@ import java.util.*;
 public class ExcelUtil {
 
     public static List<XPathRecord> read(String path) throws Exception {
-        System.out.println("📘 Reading Excel: " + path);
+        System.out.println("Reading Excel: " + path);
 
         Workbook wb = new XSSFWorkbook(new FileInputStream(path));
         Sheet sheet = wb.getSheetAt(0);
@@ -50,7 +50,7 @@ public class ExcelUtil {
         wb.write(fos);
         wb.close();
 
-        System.out.println("✅ Excel updated successfully");
+        System.out.println(" Excel updated successfully");
     }
 
     private static String get(Row r, int i) {

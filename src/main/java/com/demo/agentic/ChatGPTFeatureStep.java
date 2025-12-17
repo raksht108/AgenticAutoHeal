@@ -19,14 +19,14 @@ public class ChatGPTFeatureStep {
     private static final OkHttpClient CLIENT = new OkHttpClient();
 
     /**
-     * FEATURE-STYLE entry point (stable)
+     * FEATURE-STYLE entry point
      */
     public static List<String> getCandidateXPaths(
             String failedXpath,
             String parentElementHtml,
             int limit) {
 
-        System.out.println("🤖 ChatGPT feature step invoked");
+        System.out.println("ChatGPT feature step invoked");
 
         try {
             String prompt = buildFeaturePrompt(
@@ -57,11 +57,11 @@ public class ChatGPTFeatureStep {
     private static String buildFeaturePrompt(
             String failedXpath,
             String parentElement) {
-
+/*
         System.out.println("ParentElement: " +
                 parentElement.substring(0,
                         Math.min(500, parentElement.length())) + "...");
-
+*/
         return "The following Selenium test failed due to an incorrect XPath:\n"
                 + "Failing XPath: " + failedXpath + "\n\n"
                 + "HTML snippet:\n" + parentElement + "\n\n"
@@ -91,7 +91,7 @@ public class ChatGPTFeatureStep {
     }
 
     /**
-     * 🔐 BULLETPROOF PARSER
+     * BULLETPROOF PARSER
      */
     private static List<String> parseAndLimit(
             String json,
@@ -123,7 +123,7 @@ public class ChatGPTFeatureStep {
         }
 
         if (text == null || text.trim().isEmpty()) {
-            System.out.println("⚠ RAW OpenAI response:\n" + json);
+            System.out.println("RAW OpenAI response:\n" + json);
             throw new RuntimeException("Empty ChatGPT response");
         }
 

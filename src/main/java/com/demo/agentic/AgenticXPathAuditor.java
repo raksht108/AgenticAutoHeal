@@ -17,8 +17,8 @@ public class AgenticXPathAuditor {
 
         for (XPathRecord r : records) {
 
-            System.out.println("\n🔍 Checking XPath: " + r.xpath());
-            System.out.println("🌐 URL: " + r.url());
+            System.out.println("\n Checking XPath: " + r.xpath());
+            System.out.println("URL: " + r.url());
 
             try {
                 if (!r.url().equals(currentUrl)) {
@@ -26,7 +26,7 @@ public class AgenticXPathAuditor {
                     driver.get(currentUrl);
                 }
             } catch (Exception e) {
-                System.out.println("🚫 URL not reachable");
+                System.out.println("URL not reachable");
                 r.setStatus("URL_NOT_REACHABLE");
                 r.setLastUpdated(now());
                 continue;
@@ -38,7 +38,7 @@ public class AgenticXPathAuditor {
                 r.setLastUpdated(now());
                 continue;
             } catch (Exception e) {
-                System.out.println("❌ XPath broken – invoking ChatGPT");
+                System.out.println("XPath broken – invoking ChatGPT");
             }
 
             String parentHtml =
@@ -57,13 +57,13 @@ public class AgenticXPathAuditor {
                     r.setStatus("HEALED");
                     r.setLastUpdated(now());
                     healed = true;
-                    System.out.println("🧠 Healed XPath: " + xp);
+                    System.out.println("Healed XPath: " + xp);
                     break;
                 } catch (Exception ignored) {}
             }
 
             if (!healed) {
-                System.out.println("⚠ Healing failed");
+                System.out.println("Healing failed");
                 r.setStatus("FAILED_TO_HEAL");
                 r.setLastUpdated(now());
             }
